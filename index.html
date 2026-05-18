@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ved Shrinivas · veds-brain</title>
   <meta name="description" content="Ved Shrinivas — 16, Dubai. Building agentic systems at the intersection of AI and Finance.">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="color-scheme" content="dark">
+  <meta name="author" content="Ved Shrinivas">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.svg">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vendetta1777.github.io/veds-brain/">
+  <meta property="og:title" content="Ved Shrinivas · building at the intersection of AI and Finance">
+  <meta property="og:description" content="16 · Dubai · agentic systems for finance. Self-taught, terminal-native, shipping in public.">
+  <meta property="og:image" content="https://vendetta1777.github.io/veds-brain/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="veds-brain">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ved Shrinivas · building at the intersection of AI and Finance">
+  <meta name="twitter:description" content="16 · Dubai · agentic systems for finance. Self-taught, terminal-native, shipping in public.">
+  <meta name="twitter:image" content="https://vendetta1777.github.io/veds-brain/og.png">
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -112,7 +133,31 @@
       position: relative;
       z-index: 5;
     }
-    .topbar .left { display: flex; gap: 16px; align-items: center; }
+    .topbar .left { display: flex; gap: 14px; align-items: center; }
+    .topbar .monogram {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--accent);
+      padding: 4px 7px;
+      border: 0.5px solid rgba(0, 255, 136, 0.35);
+      background: rgba(0, 255, 136, 0.04);
+      line-height: 1;
+      transition: background 0.3s var(--ease), border-color 0.3s var(--ease), color 0.3s var(--ease);
+    }
+    .topbar .monogram:hover {
+      border-color: rgba(0, 255, 136, 0.55);
+      background: rgba(0, 255, 136, 0.08);
+    }
+    .topbar .monogram .mono-caret {
+      display: inline-block;
+      width: 4px; height: 9px;
+      background: currentColor;
+      animation: blink 1.05s steps(1) infinite;
+    }
     .topbar .dot {
       display: inline-block;
       width: 6px; height: 6px;
@@ -164,40 +209,117 @@
     /* --- tron grid (receding) --- */
     .tron {
       position: absolute;
-      bottom: -2%;
-      left: -20%;
-      right: -20%;
-      height: 70%;
-      perspective: 600px;
+      bottom: -6%;
+      left: -25%;
+      right: -25%;
+      height: 84%;
+      perspective: 700px;
       perspective-origin: 50% 100%;
       pointer-events: none;
       z-index: 0;
-      opacity: 0.16;
-      -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 95%);
-              mask-image: linear-gradient(to top, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 95%);
+      opacity: 0.36;
+      -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1) 22%, rgba(0,0,0,0) 96%);
+              mask-image: linear-gradient(to top, rgba(0,0,0,1) 22%, rgba(0,0,0,0) 96%);
     }
     .tron-plane {
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(var(--accent) 1px, transparent 1px),
-        linear-gradient(90deg, var(--accent) 1px, transparent 1px);
-      background-size: 60px 60px;
+        linear-gradient(var(--accent) 1.5px, transparent 1.5px),
+        linear-gradient(90deg, var(--accent) 1.5px, transparent 1.5px);
+      background-size: 70px 70px;
       transform-origin: 50% 100%;
-      transform: rotateX(62deg);
+      transform: rotateX(64deg);
       animation: tronScroll 5s linear infinite;
       will-change: background-position;
     }
+    .tron-plane.glow {
+      filter: blur(4px);
+      opacity: 0.75;
+      mix-blend-mode: screen;
+    }
     @keyframes tronScroll {
       from { background-position: 0 0, 0 0; }
-      to   { background-position: 0 60px, 0 60px; }
+      to   { background-position: 0 70px, 0 70px; }
     }
     .tron::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse 60% 70% at 50% 95%, transparent 0%, var(--bg) 80%);
+      background: radial-gradient(ellipse 55% 65% at 50% 96%, transparent 0%, var(--bg) 82%);
       pointer-events: none;
+      z-index: 3;
+    }
+
+    /* --- tron bike + trail --- */
+    .tron-bike-wrap {
+      position: absolute;
+      bottom: 6%;
+      left: 0;
+      display: flex;
+      align-items: center;
+      z-index: 2;
+      animation: bikeRide 7s linear infinite;
+      will-change: transform, opacity;
+    }
+    .tron-bike-wrap.reverse {
+      animation: bikeRideReverse 9s linear infinite;
+      animation-delay: 2.5s;
+      bottom: 12%;
+    }
+    .bike-trail {
+      width: 32vw;
+      height: 2px;
+      background: linear-gradient(90deg,
+        rgba(0, 255, 136, 0) 0%,
+        rgba(0, 255, 136, 0.15) 30%,
+        rgba(0, 255, 136, 0.85) 95%,
+        rgba(255, 255, 255, 1) 100%);
+      box-shadow:
+        0 0 4px rgba(0, 255, 136, 0.8),
+        0 0 12px rgba(0, 255, 136, 0.5),
+        0 0 28px rgba(0, 255, 136, 0.25);
+      border-radius: 1px;
+    }
+    .tron-bike-wrap.reverse .bike-trail {
+      background: linear-gradient(90deg,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(0, 255, 136, 0.85) 5%,
+        rgba(0, 255, 136, 0.15) 70%,
+        rgba(0, 255, 136, 0) 100%);
+      order: 2;
+    }
+    .bike-svg {
+      flex: none;
+      width: 56px;
+      height: 18px;
+      margin-left: -2px;
+      filter:
+        drop-shadow(0 0 3px var(--accent))
+        drop-shadow(0 0 10px rgba(0, 255, 136, 0.55));
+      animation: bikeBob 0.9s ease-in-out infinite alternate;
+    }
+    .tron-bike-wrap.reverse .bike-svg {
+      transform: scaleX(-1);
+      margin-left: 0;
+      margin-right: -2px;
+      order: 1;
+    }
+    @keyframes bikeRide {
+      0%   { transform: translateX(-32vw); opacity: 0; }
+      7%   { opacity: 1; }
+      93%  { opacity: 1; }
+      100% { transform: translateX(118vw); opacity: 0; }
+    }
+    @keyframes bikeRideReverse {
+      0%   { transform: translateX(118vw); opacity: 0; }
+      7%   { opacity: 1; }
+      93%  { opacity: 1; }
+      100% { transform: translateX(-32vw); opacity: 0; }
+    }
+    @keyframes bikeBob {
+      from { translate: 0 0; }
+      to   { translate: 0 -1px; }
     }
 
     .hero .prompt {
@@ -399,6 +521,27 @@
       margin-top: 18px;
     }
 
+    /* --- sparklines on cards --- */
+    .card .spark {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      width: 76px;
+      height: 22px;
+      color: var(--accent);
+      opacity: 0.55;
+      z-index: 2;
+      transition: opacity 0.3s var(--ease);
+      pointer-events: none;
+    }
+    .card:hover .spark { opacity: 1; }
+    .card:has(.badge.shipping) .spark { color: var(--warn); }
+    .card:has(.badge.research) .spark { color: var(--info); }
+    .card .spark-axis {
+      stroke: var(--border-strong);
+      stroke-width: 0.5;
+    }
+
     /* --- badges (status indicators with pulse) --- */
     .badge {
       display: inline-flex;
@@ -542,6 +685,50 @@
     }
     .tags span:hover::before { color: #050505; }
 
+    /* --- ship log --- */
+    .ship-log {
+      border: 0.5px solid var(--border-strong);
+      background: var(--bg-elev);
+      box-shadow: var(--shadow-rest);
+    }
+    .log-row {
+      display: grid;
+      grid-template-columns: 140px 1fr auto;
+      align-items: center;
+      padding: 14px 24px;
+      border-bottom: 0.5px solid var(--border-strong);
+      font-size: 13px;
+      gap: 16px;
+      transition: background 0.3s var(--ease);
+    }
+    .log-row:hover { background: var(--bg-elev-hi); }
+    .log-row:last-child { border-bottom: none; }
+    .log-when {
+      color: var(--text-faint);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+    .log-when::before { content: "[ "; color: var(--text-faint); }
+    .log-when::after  { content: " ]"; color: var(--text-faint); }
+    .log-what {
+      color: #d8d8d8;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .log-tag {
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      padding: 3px 8px;
+      border: 0.5px solid var(--border-strong);
+      background: #0a0a0a;
+      font-weight: 500;
+    }
+    .log-tag.accent { color: var(--accent); border-color: rgba(0,255,136,0.25); }
+    .log-tag.warn   { color: var(--warn);   border-color: rgba(255,180,84,0.25); }
+    .log-tag.info   { color: var(--info);   border-color: rgba(126,184,247,0.25); }
+
     /* --- connect --- */
     .connect {
       border: 0.5px solid var(--border-strong);
@@ -628,7 +815,9 @@
       .wrap { padding: 28px 18px 60px; perspective: none; }
       body { background-size: 40px 40px; animation-duration: 60s; }
       .hero { padding: 40px 0 36px; }
-      .tron { opacity: 0.10; }
+      .tron { opacity: 0.26; }
+      .bike-trail { width: 45vw; }
+      .tron-bike-wrap.reverse { bottom: 14%; }
       .grid { grid-template-columns: 1fr; perspective: none; }
       .card { border-right: none !important; }
       .card:nth-last-child(-n+2) { border-bottom: 0.5px solid var(--border-strong); }
@@ -640,12 +829,22 @@
       .tags span:last-child { border-bottom: none; }
       .connect-row { grid-template-columns: 80px 1fr auto; padding: 14px 18px; }
       .topbar { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .log-row {
+        grid-template-columns: 1fr auto;
+        grid-template-areas: "when tag" "what what";
+        padding: 12px 18px;
+        gap: 6px 12px;
+      }
+      .log-when { grid-area: when; }
+      .log-tag  { grid-area: tag; }
+      .log-what { grid-area: what; white-space: normal; font-size: 12.5px; }
+      .card .spark { width: 60px; top: 18px; right: 18px; }
     }
 
     /* --- disable 3D effects on non-fine pointers --- */
     @media not all and (hover: hover) and (pointer: fine) {
       .wrap, .grid { perspective: none; }
-      .tron { opacity: 0.10; }
+      .tron { opacity: 0.26; }
     }
 
     /* --- reduced motion --- */
@@ -672,6 +871,7 @@
     <!-- TOP BAR -->
     <div class="topbar boot" style="animation-delay: 0ms;">
       <div class="left">
+        <span class="monogram" aria-label="Ved Shrinivas">VS<span class="mono-caret"></span></span>
         <span class="dot"></span>
         <span>veds-brain // online</span>
       </div>
@@ -686,7 +886,34 @@
     <!-- HERO -->
     <header class="hero">
       <div class="tron" aria-hidden="true">
+        <div class="tron-plane glow"></div>
         <div class="tron-plane"></div>
+        <div class="tron-bike-wrap">
+          <div class="bike-trail"></div>
+          <svg class="bike-svg" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 4 15 L 14 8 Q 18 5, 24 5 L 40 5 Q 46 6, 52 11 L 58 15 Z"
+                  fill="#00ff88" />
+            <path d="M 22 7 Q 28 5.5, 38 6.2 L 44 8.5 L 26 8.5 Z"
+                  fill="#ffffff" opacity="0.7" />
+            <circle cx="12" cy="16" r="3" fill="#0a0a0a" stroke="#00ff88" stroke-width="1.6" />
+            <circle cx="50" cy="16" r="3" fill="#0a0a0a" stroke="#00ff88" stroke-width="1.6" />
+            <circle cx="12" cy="16" r="1" fill="#00ff88" />
+            <circle cx="50" cy="16" r="1" fill="#00ff88" />
+          </svg>
+        </div>
+        <div class="tron-bike-wrap reverse">
+          <svg class="bike-svg" viewBox="0 0 60 20" xmlns="http://www.w3.org/2000/svg">
+            <path d="M 4 15 L 14 8 Q 18 5, 24 5 L 40 5 Q 46 6, 52 11 L 58 15 Z"
+                  fill="#00ff88" />
+            <path d="M 22 7 Q 28 5.5, 38 6.2 L 44 8.5 L 26 8.5 Z"
+                  fill="#ffffff" opacity="0.7" />
+            <circle cx="12" cy="16" r="3" fill="#0a0a0a" stroke="#00ff88" stroke-width="1.6" />
+            <circle cx="50" cy="16" r="3" fill="#0a0a0a" stroke="#00ff88" stroke-width="1.6" />
+            <circle cx="12" cy="16" r="1" fill="#00ff88" />
+            <circle cx="50" cy="16" r="1" fill="#00ff88" />
+          </svg>
+          <div class="bike-trail"></div>
+        </div>
       </div>
       <div class="prompt boot" style="animation-delay: 100ms;">~/ved $ whoami</div>
       <h1 class="boot" style="animation-delay: 180ms;" data-parallax="-10">Ved Shrinivas<span class="cursor"></span></h1>
@@ -714,6 +941,18 @@
 
         <div class="card">
           <div class="idx">01</div>
+          <svg class="spark" viewBox="0 0 76 22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g fill="currentColor">
+              <rect x="0"  y="15" width="5" height="7"/>
+              <rect x="9"  y="11" width="5" height="11"/>
+              <rect x="18" y="13" width="5" height="9"/>
+              <rect x="27" y="7"  width="5" height="15"/>
+              <rect x="36" y="9"  width="5" height="13"/>
+              <rect x="45" y="4"  width="5" height="18"/>
+              <rect x="54" y="2"  width="5" height="20"/>
+              <rect x="63" y="0"  width="5" height="22"/>
+            </g>
+          </svg>
           <div class="title">Invoice Automation</div>
           <div class="desc">AI agent that ingests invoices, extracts line items, and reconciles them against ledgers.</div>
           <div class="badge-row">
@@ -724,6 +963,12 @@
 
         <div class="card">
           <div class="idx">02</div>
+          <svg class="spark" viewBox="0 0 76 22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <polyline points="0,16 9,10 18,14 27,7 36,12 45,5 54,9 63,3 72,6"
+                      fill="none" stroke="currentColor" stroke-width="1.4"
+                      stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="72" cy="6" r="1.8" fill="currentColor"/>
+          </svg>
           <div class="title">Fintech Learning Game</div>
           <div class="desc">Interactive game teaching financial concepts — compound interest, asset allocation, risk.</div>
           <div class="badge-row">
@@ -734,6 +979,12 @@
 
         <div class="card">
           <div class="idx">03</div>
+          <svg class="spark" viewBox="0 0 76 22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M 0 20 Q 18 19, 32 16 T 56 8 Q 65 4, 72 2"
+                  fill="none" stroke="currentColor" stroke-width="1.4"
+                  stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="72" cy="2" r="1.8" fill="currentColor"/>
+          </svg>
           <div class="title">Net Worth &amp; Asset Planner</div>
           <div class="desc">Personal finance dashboard for tracking net worth, asset classes, and long-term planning.</div>
           <div class="badge-row">
@@ -744,6 +995,12 @@
 
         <div class="card">
           <div class="idx">04</div>
+          <svg class="spark" viewBox="0 0 76 22" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M 0 2 Q 12 4, 24 9 T 50 16 Q 62 19, 72 20"
+                  fill="none" stroke="currentColor" stroke-width="1.4"
+                  stroke-linejoin="round" stroke-linecap="round"/>
+            <circle cx="72" cy="20" r="1.8" fill="currentColor"/>
+          </svg>
           <div class="title">EV Valuation Model</div>
           <div class="desc">Depreciation and resale modeling for electric vehicles. Built on 6 months of independent research.</div>
           <div class="badge-row">
@@ -779,6 +1036,31 @@
             <li>LLMs</li>
             <li>Git</li>
           </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHIP LOG -->
+    <section id="now" class="reveal">
+      <div class="sec-head">
+        <h2>Ship Log</h2>
+        <span class="count">recent → past</span>
+      </div>
+      <div class="ship-log">
+        <div class="log-row">
+          <span class="log-when">may 2026</span>
+          <span class="log-what">homepage v3 — animations, 3D cards, tron grid</span>
+          <span class="log-tag accent">LATEST</span>
+        </div>
+        <div class="log-row">
+          <span class="log-when">in progress</span>
+          <span class="log-what">invoice agent — building ledger reconciliation layer</span>
+          <span class="log-tag warn">SHIPPING</span>
+        </div>
+        <div class="log-row">
+          <span class="log-when">ongoing</span>
+          <span class="log-what">EV depreciation modeling — 6mo independent research</span>
+          <span class="log-tag info">RESEARCH</span>
         </div>
       </div>
     </section>
